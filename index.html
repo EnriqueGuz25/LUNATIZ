@@ -120,6 +120,46 @@
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
+        .menu-toggle {
+            display: none;
+            background: #277ec3;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 0 auto;
+            transition: all 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: #2979b8;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #277ec3;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9em;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover {
+            background: #2979b8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
 
         /* SECCIONES */
         .section {
@@ -282,6 +322,49 @@
             .products-grid { grid-template-columns: 1fr; }
             .contact-bar a { display: inline-block; margin: 5px 0; }
         }
+        /* RESPONSIVE - MENÚ HAMBURGUESA */
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 1.2em; }
+            .products-grid { grid-template-columns: 1fr; }
+            .contact-bar a { display: block; margin: 5px 0; }
+            
+            /* Mostrar botón hamburguesa */
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Ocultar enlaces por defecto en móvil */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+                animation: slideDown 0.3s ease-out;
+            }
+            
+            /* Clase active para mostrar el menú */
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links a {
+                display: block;
+                margin: 5px 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -309,6 +392,7 @@
     </div>
 
     <!-- NAVEGACIÓN -->
+    <!-- PENDIENTE-Menu normal-
     <div class="nav-categories">
         <a href="#higienicos1">Higiénicos</a>
         <a href="#limpieza2">Limpieza</a>
@@ -316,6 +400,19 @@
         <a href="#aromatizantes4">Aromatizantes</a>
         <a href="#cafeteria5">Cafetería</a>
         <a href="#proteccion6">Protección</a>
+    </div> -->
+    <!-- NAVEGACIÓN CON MENÚ HAMBURGUESA -->
+    <div class="nav-categories">
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú">☰ Menú</button>
+        <div class="nav-links" id="navLinks">
+            <a href="#higienicos1" onclick="closeMenu()">Higiénicos</a>
+            <a href="#limpieza2" onclick="closeMenu()">Limpieza</a>
+            <a href="#quimicos3" onclick="closeMenu()">Químicos</a>
+            <a href="#aromatizantes4" onclick="closeMenu()">Aromatizantes</a>
+            <a href="#cafeteria5" onclick="closeMenu()">Cafetería</a>
+            <a href="#proteccion6" onclick="closeMenu()">Protección</a>
+            <a href="#Contacto7" onclick="closeMenu()">Contactanos</a>
+        </div>
     </div>
 
     <!-- SECCIÓN 1: HIGIÉNICOS -->
@@ -330,9 +427,8 @@
             <!-- Detergentes Arcoiris -->
             <div class="product-card">
                 <div class="product-name">PAPEL HIGIÉNICO SUPREME GOLD</div>
-                <div class="product-desc">Papel higiénico
-                <img src="ImagenesProductos/SUPREME_GOLD.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Papel higiénico</div>
+                <div class="product-desc"><img src="ImagenesProductos/SUPREME_GOLD.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Junior con 12 pzas</td><td>$283.43</td></tr>
                     <tr><td>Jumbo con 6 pzas</td><td>$283.43</td></tr>
@@ -342,113 +438,101 @@
 
             <div class="product-card">
                 <div class="product-name">PAPEL HIGIÉNICO DALIA</div>
-                <div class="product-desc">Rollo con 180 mts, caja con 12 pzas 
-                <img src="ImagenesProductos/DALIA.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Rollo con 180 mts, caja con 12 pzas</div>
+                <div class="product-desc"><img src="ImagenesProductos/DALIA.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$359.17</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PAPEL HIGIÉNICO FAPSA</div>
-                <div class="product-desc">Rollo con 360 mts, caja con 6 pzas 
-                <img src="ImagenesProductos/FAPSA.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Rollo con 360 mts, caja con 6 pzas</div>
+                <div class="product-desc"><img src="ImagenesProductos/FAPSA.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$362.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PAPEL HIGIÉNICO SUNNY</div>
-                <div class="product-desc">Paquete de 4 piezas 
-                <img src="ImagenesProductos/SUNNY.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Paquete de 4 piezas</div>
+                <div class="product-desc"><img src="ImagenesProductos/SUNNY.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$12.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PAPEL HIGIÉNICO KLEENEX</div>
-                <div class="product-desc">Rollo individual con 400 hojas 
-                <img src="ImagenesProductos/KLEENEX.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Rollo individual con 400 hojas</div>
+                <div class="product-desc"><img src="ImagenesProductos/KLEENEX.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$9.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">SERVITOALLA TORK</div>
-                <div class="product-desc">Rollo de servitoalla azul con 60 hojas 
-                <img src="ImagenesProductos/TORK.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Rollo de servitoalla azul con 60 hojas</div>
+                <div class="product-desc"><img src="ImagenesProductos/TORK.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$86.52</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TOALLA FAPSA</div>
-                <div class="product-desc">Rollo de toalla Fapsa natural con 160 mts
-                <img src="ImagenesProductos/FAPSA_natural.png" alt="" width="300" height="200">
-                </div>
+                <div class="product-desc">Rollo de toalla Fapsa natural con 160 mts</div>
+                <div class="product-desc"><img src="ImagenesProductos/FAPSA_natural.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$313.27</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TOALLA ELITE</div>
-                <div class="product-desc">Rollo de toalla Elite blanca con 180 mts
-                <img src="ImagenesProductos/ELITE.png" alt="" width="300" height="200">
+                <div class="product-desc">Rollo de toalla Elite blanca con 180 mts</div>
+                <img src="ImagenesProductos/ELITE.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 </div>
                 <div class="product-price">$410.23</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TOALLA SUPREME GOLD</div>
-                <div class="product-desc">Rollo de toalla supreme gold blanca con 180 mts 
-                <img src="ImagenesProductos/SUPREME_GOLD_para_manos.png" alt="" width="300" height="200"> 
-                </div>
+                <div class="product-desc">Rollo de toalla supreme gold blanca con 180 mts</div>
+                <div class="product-desc"><img src="ImagenesProductos/SUPREME_GOLD_para_manos.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$293.87</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TOALLA TORK</div>
-                <div class="product-desc">Toalla interdoblada
-                <img src="ImagenesProductos/TORK_individual.png" alt="" width="300" height="200"> 
+                <div class="product-desc">Toalla interdoblada</div>
+                <div class="product-desc"><img src="ImagenesProductos/TORK_individual.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 </div>
                 <div class="product-price">$228.24</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PAÑUELOS KLEENEX</div>
-                <div class="product-desc">Caja individual de pañuelos Kleenex con 90 pzas
-                <img src="ImagenesProductos/KLEENEX_individual.png" alt="" width="300" height="200"> 
-                </div>
+                <div class="product-desc">Caja individual de pañuelos Kleenex con 90 pzas</div>
+                <div class="product-desc"><img src="ImagenesProductos/KLEENEX_individual.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$24.94</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">SERVILLETA MIA</div>
-                <div class="product-desc">Paquete con 500 piezas
-                <img src="ImagenesProductos/SERVILLETA_MIA.png" alt="" width="300" height="200"> 
-                </div>
+                <div class="product-desc">Paquete con 500 piezas</div>
+                <div class="product-desc"><img src="ImagenesProductos/SERVILLETA_MIA.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$36.15</div>
             </div>
             
             <div class="product-card">
                 <div class="product-name">SERVILLETA TORK</div>
-                <div class="product-desc">Servilleta para servilletero *caja*
-                <img src="ImagenesProductos/SERVILLETA_PARA.png" alt="" width="300" height="200"> 
-                </div>
+                <div class="product-desc">Servilleta para servilletero *caja*</div>
+                <div class="product-desc"><img src="ImagenesProductos/SERVILLETA_PARA.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$490.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">SERVILLETERO</div>
-                <div class="product-desc">Pieza
-                <img src="ImagenesProductos/SERVILLETERO.png" alt="" width="280" height="250"> 
-                </div>
+                <div class="product-desc">Pieza</div>
+                <div class="product-desc"><img src="ImagenesProductos/SERVILLETERO.png" alt="" width="280" height="250" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$140.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">DESPACHADOR JOFEL</div>
-                <div class="product-desc">Despachador de papel higiénico
-                <img src="ImagenesProductos/JOFEL.png" alt="" width="300" height="200"> 
-                </div>
+                <div class="product-desc">Despachador de papel higiénico</div>
+                <div class="product-desc"><img src="ImagenesProductos/JOFEL.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Tamaño junior</td><td>$328.19</td></tr>
                     <tr><td>Tamaño jumbo</td><td>$417.69</td></tr>
@@ -457,17 +541,15 @@
 
             <div class="product-card">
                 <div class="product-name">DESPACHADOR DE PALANCA JOFEL</div>
-                <div class="product-desc">Despachador de palanca de papel de rollo
-                <img src="ImagenesProductos/JOFEL_palanca.png" alt="" width="300" height="200"> 
-                </div>
+                <div class="product-desc">Despachador de palanca de papel de rollo</div>
+                <div class="product-desc"><img src="ImagenesProductos/JOFEL_palanca.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$1,014.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">JAVONERA OVAL</div>
-                <div class="product-desc">Jabonera color humo
-                <img src="ImagenesProductos/OVAL.png" alt="" width="250" height="200"> 
-                </div>
+                <div class="product-desc">Jabonera color humo</div>
+                <div class="product-desc"><img src="ImagenesProductos/OVAL.png" alt="" width="250" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$283.43</div>
             </div>
         </div>
@@ -486,147 +568,147 @@
             <div class="product-card">
                 <div class="product-name">TRAPEADOR MAGITEL</div>
                 <div class="product-desc">Trapeador blanco por pieza </div>
-                <div class="product-desc"><img src="ImagenesProductos/TRAPEADOR_MAGITEL.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/TRAPEADOR_MAGITEL.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$43.03</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TRAPEADOR PABILO</div>
                 <div class="product-desc">Trapeador pabilo grande por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/TRAPEADOR_PABILO.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/TRAPEADOR_PABILO.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$58.18</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">ESCOBA PEÑOLERA</div>
                 <div class="product-desc">Disponible por kilo</div>
-                <div class="product-desc"><img src="ImagenesProductos/ESCOBA_PEÑOLERA.png" alt="" width="160" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ESCOBA_PEÑOLERA.png" alt="" width="160" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$73.10</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">ESCOBA ABANICO</div>
                 <div class="product-desc">Tamaño grande incluye mango de madera</div>
-                <div class="product-desc"><img src="ImagenesProductos/ESCOBA_ABANICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ESCOBA_ABANICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$51.64</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">ESCOBA PLÁSTICO</div>
                 <div class="product-desc">No incluye mango</div>
-                <div class="product-desc"><img src="ImagenesProductos/ESCOBA_PLASTICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ESCOBA_PLASTICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$29.84</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">MANGO DE MADERA</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/MANGO_DE_MADERA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/MANGO_DE_MADERA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$22.38</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">MOP BASTIDOR</div>
                 <div class="product-desc">Bastidor de madera para mop</div>
-                <div class="product-desc"><img src="ImagenesProductos/MOP_BASTIDOR.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/MOP_BASTIDOR.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$90.25</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">MOP REFORZADO</div>
                 <div class="product-desc">Mop de 90 cm</div>
-                <div class="product-desc"><img src="ImagenesProductos/MOP_REFORZADO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/MOP_REFORZADO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$86.52</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">MOP REFACCIÓN</div>
                 <div class="product-desc">Mop de refacción de 90 cm</div>
-                <div class="product-desc"><img src="ImagenesProductos/MOP_REFACCION.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/MOP_REFACCION.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$37.29</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">RECOGEDOR PLÁSTICO</div>
                 <div class="product-desc">Recogedor de plástico con mango</div>
-                <div class="product-desc"><img src="ImagenesProductos/RECOGEDOR_PLASTICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/RECOGEDOR_PLASTICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$22.38</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">RECOGEDOR LAMINA</div>
                 <div class="product-desc">Disponible por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/RECOGEDOR_LAMINA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/RECOGEDOR_LAMINA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$28.34</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">RECOGEDOR EXTRAR</div>
                 <div class="product-desc">Recogdor de lamina extrareforzado</div>
-                <div class="product-desc"><img src="ImagenesProductos/RECOGEDOR_EXTRAR.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/RECOGEDOR_EXTRAR.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$58.18</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">JALADOR NEOPRENO</div>
                 <div class="product-desc">No incluye mango</div>
-                <div class="product-desc"><img src="ImagenesProductos/JALADOR_NEOPRENO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/JALADOR_NEOPRENO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$216.30</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">BASTON LAMINA</div>
                 <div class="product-desc">Baston 1.5 m rojo de lamina reforzado</div>
-                <div class="product-desc"><img src="ImagenesProductos/BASTON_LAMINA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/BASTON_LAMINA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$41.77</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">JALADOR METÁLICO</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/JALADOR_METÁLICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/JALADOR_METÁLICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$79.06</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CESTO PAPELERO</div>
                 <div class="product-desc">Cesto papelero negro de 23 lts</div>
-                <div class="product-desc"><img src="ImagenesProductos/CESTO_PAPELERO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CESTO_PAPELERO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$67.13</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CUBETA PLÁSTICO</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/CUBETA_PLÁSTICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CUBETA_PLÁSTICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$38.79</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">FRANELA GRIS</div>
                 <div class="product-desc">Venta por metro</div>
-                <div class="product-desc"><img src="ImagenesProductos/FRANELA_GRIS.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/FRANELA_GRIS.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$16.41</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">FIBRA</div>
                 <div class="product-desc">Fibra economica con esponja</div>
-                <div class="product-desc"><img src="ImagenesProductos/FIBRA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/FIBRA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$5.22</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">ESPONJA</div>
                 <div class="product-desc">Esponja lavacoches</div>
-                <div class="product-desc"><img src="ImagenesProductos/ESPONJA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ESPONJA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$14.92</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">FIBRA VERDE</div>
                 <div class="product-desc">venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/FIBRA_VERDE.png" alt="" width="200" height="150"></div>
+                <div class="product-desc"><img src="ImagenesProductos/FIBRA_VERDE.png" alt="" width="200" height="150" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Fibra verde Scotch Brite P-96</td><td>$19.39</td></tr>
                     <tr><td>Friba económica</td><td>$5.16</td></tr>
@@ -636,27 +718,27 @@
             <div class="product-card">
                 <div class="product-name">PAÑO MICROFIBRA</div>
                 <div class="product-desc">Paño economico por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/PAÑO_MICROFIBRA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/PAÑO_MICROFIBRA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$20.88</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PAÑO MILTEX</div>
                 <div class="product-desc">Paquete con 5 paños</div>
-                <div class="product-desc"><img src="ImagenesProductos/MILTEX.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/MILTEX.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$20.88</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PISTOLA ATOMIZADORA</div>
                 <div class="product-desc">Pistola reforzada, venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/PISTOLA_ATOMIZADORA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/PISTOLA_ATOMIZADORA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$14.92</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">ENVASE PLASTICO</div>
-                <div class="product-desc"><img src="ImagenesProductos/ENVASE_PLASTICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ENVASE_PLASTICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Envase de plástico de 1 gal</td><td>$14.92</td></tr>
                     <tr><td>Envase de plástico de 1 ltr </td><td>$7.46</td></tr>
@@ -666,7 +748,7 @@
             <div class="product-card">
                 <div class="product-name">BOLSA NEGRA</div>
                 <div class="product-desc">Venta por kilo</div>
-                <div class="product-desc"><img src="ImagenesProductos/BOLSA_NEGRA.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/BOLSA_NEGRA.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Bolsa para basura 90x120</td><td>$48.77</td></tr>
                     <tr><td>Bolsa para basura 70x90</td><td>$43.26</td></tr>
@@ -676,35 +758,35 @@
             <div class="product-card">
                 <div class="product-name">BOLSA DE ROLLO</div>
                 <div class="product-desc">Bolsa natural 24x24 (Rollo con 50 pzas)</div>
-                <div class="product-desc"><img src="ImagenesProductos/BOLSA_DE_ROLLO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/BOLSA_DE_ROLLO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$17.50</div>
             </div>
             
             <div class="product-card">
                 <div class="product-name">CEPILLO</div>
                 <div class="product-desc">Tipo plancha</div>
-                <div class="product-desc"><img src="ImagenesProductos/CEPILLO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CEPILLO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$18.36</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">FIBRA DE ALAMBRE</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/FIBRA_DE_ALAMBRE.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/FIBRA_DE_ALAMBRE.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$20.00</div>
             </div>
             
             <div class="product-card">
                 <div class="product-name">LIMPIADOR PLEDGE</div>
                 <div class="product-desc">Lata de 333 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/LIMPIADOR_PLEDGE.png" alt="" width="140" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/LIMPIADOR_PLEDGE.png" alt="" width="140" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$85.03</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">ABRILLANTADOR WISE</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/ABRILLANTADOR_WISE.png" alt="" width="100" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ABRILLANTADOR_WISE.png" alt="" width="100" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$72.35</div>
             </div>
 
@@ -725,7 +807,7 @@
             <div class="product-card">
                 <div class="product-name">CLORO</div>
                 <div class="product-desc">Desinfectante multiusos</div>
-                <div class="product-desc"><img src="ImagenesProductos/CLORO.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CLORO.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Premium: Porrón (20 lts)</td><td>$203.00</td></tr>
                     <tr><td>Premium: Galon (4 lts)</td><td>$55.54</td></tr>
@@ -740,7 +822,7 @@
             <div class="product-card">
                 <div class="product-name">ESCENCIA DE PINO</div>
                 <div class="product-desc">Pinol</div>
-                <div class="product-desc"><img src="ImagenesProductos/ESCENCIA_DE_PINO.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/ESCENCIA_DE_PINO.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$175.01</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$49.92</td></tr>
@@ -751,7 +833,7 @@
             <div class="product-card">
                 <div class="product-name">MULTIUSOS</div>
                 <div class="product-desc">Lavanda y Mar fresco</div>
-                <div class="product-desc"><img src="ImagenesProductos/MULTIUSOS.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/MULTIUSOS.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$175.01</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$49.92</td></tr>
@@ -762,7 +844,7 @@
             <div class="product-card">
                 <div class="product-name">LIMPIA VIDRIOS</div>
                 <div class="product-desc">Limpiavidrios</div>
-                <div class="product-desc"><img src="ImagenesProductos/LIMPIA_VIDRIOS.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/LIMPIA_VIDRIOS.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$255.01</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$65.92</td></tr>
@@ -773,7 +855,7 @@
             <div class="product-card">
                 <div class="product-name">JABON MANOS</div>
                 <div class="product-desc">Premium olor a fresa</div>
-                <div class="product-desc"><img src="ImagenesProductos/JABON_MANOS.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/JABON_MANOS.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$355.73</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$86.06</td></tr>
@@ -784,7 +866,7 @@
             <div class="product-card">
                 <div class="product-name">JABON TRASTES</div>
                 <div class="product-desc">Premium</div>
-                <div class="product-desc"><img src="ImagenesProductos/JABON_TRASTES.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/JABON_TRASTES.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$355.04</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$85.92</td></tr>
@@ -795,7 +877,7 @@
             <div class="product-card">
                 <div class="product-name">DESENGRASANTE</div>
                 <div class="product-desc"></div>
-                <div class="product-desc"><img src="ImagenesProductos/DESENGRASANTE.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/DESENGRASANTE.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$275.06</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$60.94</td></tr>
@@ -806,7 +888,7 @@
             <div class="product-card">
                 <div class="product-name">SARRICIDA</div>
                 <div class="product-desc"></div>
-                <div class="product-desc"><img src="ImagenesProductos/SARRICIDA.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/SARRICIDA.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$175.01</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$49.92</td></tr>
@@ -817,7 +899,7 @@
             <div class="product-card">
                 <div class="product-name">DESENGRASANTE DE COCINA</div>
                 <div class="product-desc"></div>
-                <div class="product-desc"><img src="ImagenesProductos/DESENGRASANTE_DE.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/DESENGRASANTE_DE.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Porrón (20 lts)</td><td>$255.01</td></tr>
                     <tr><td>Galon (4 lts)</td><td>$65.92</td></tr>
@@ -828,14 +910,14 @@
             <div class="product-card">
                 <div class="product-name">FABULOSO</div>
                 <div class="product-desc">Venta por litro</div>
-                <div class="product-desc"><img src="ImagenesProductos/FABULOSO.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/FABULOSO.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$38.72</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">AXION</div>
                 <div class="product-desc">Jabón lavatrastes</div>
-                <div class="product-desc"><img src="ImagenesProductos/AXION.png" alt="" width="240" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AXION.png" alt="" width="240" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Venta por pieza 2.8 L</td><td>$185.00</td></tr>
                     <tr><td>Venta por pieza 900 mil</td><td>$54.00</td></tr>
@@ -845,7 +927,7 @@
             <div class="product-card">
                 <div class="product-name">CLORALEX</div>
                 <div class="product-desc">Cloro</div>
-                <div class="product-desc"><img src="ImagenesProductos/CLORALEX.png" alt="" width="150" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CLORALEX.png" alt="" width="150" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Venta por pieza litro</td><td>$20.00</td></tr>
                     <tr><td>Venta por pieza 500 mil</td><td>$12.00</td></tr>
@@ -856,7 +938,7 @@
             <div class="product-card">
                 <div class="product-name">PINOL</div>
                 <div class="product-desc">Limpiador</div>
-                <div class="product-desc"><img src="ImagenesProductos/PINOL.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/PINOL.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Venta por pieza litro</td><td>$35.00</td></tr>
                     <tr><td>Venta por pieza 500 mil</td><td>$24.00</td></tr>
@@ -867,42 +949,42 @@
             <div class="product-card">
                 <div class="product-name">JABON PARA MANOS</div>
                 <div class="product-desc">Aroma durazno - Venta por pieza 550 mil</div>
-                <div class="product-desc"><img src="ImagenesProductos/JABON_PAR_MANOS.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/JABON_PAR_MANOS.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$43.15</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">DETERGENTE SOLEX</div>
                 <div class="product-desc">Venta por pieza 9 kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_SOLEX.png" alt="" width="230" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_SOLEX.png" alt="" width="230" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$270.81</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">DETERGENTE ARCOIRIS</div>
                 <div class="product-desc">Venta por pieza 9 kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_ARCOIRIS.png" alt="" width="230" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_ARCOIRIS.png" alt="" width="230" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$309.83</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">DETERGENTE FOCA</div>
                 <div class="product-desc">Venta por pieza 250 gr </div>
-                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_FOCA.png" alt="" width="230" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_FOCA.png" alt="" width="230" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$11.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">DETERGENTE ROMA</div>
                 <div class="product-desc">Venta por pieza 1 Kg </div>
-                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_ROMA.png" alt="" width="230" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/DETERGENTE_ROMA.png" alt="" width="230" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$45.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">JABON ZOTE</div>
                 <div class="product-desc">Venta por pieza 400 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/JABON_ZOTE.png" alt="" width="270" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/JABON_ZOTE.png" alt="" width="270" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$25.50</div>
             </div>
         </div>
@@ -921,7 +1003,7 @@
             <div class="product-card">
                 <div class="product-name">DOSIFICADOR WIESE</div>
                 <div class="product-desc">Venta por pieza
-                <img src="ImagenesProductos/DOSIFICADOR_WIESE.png" alt="" width="250" height="200"> 
+                <img src="ImagenesProductos/DOSIFICADOR_WIESE.png" alt="" width="250" height="200" style="max-width:100%; height:auto;></div>
                 </div>
                 <div class="product-price">$390.09</div>
             </div>
@@ -929,7 +1011,7 @@
             <div class="product-card">
                 <div class="product-name">REPUESTO WIESE</div>
                 <div class="product-desc">Repuesto para dosificador de 180 gr
-                <img src="ImagenesProductos/REPUESTO_WIESE.png" alt="" width="250" height="200"> 
+                <img src="ImagenesProductos/REPUESTO_WIESE.png" alt="" width="250" height="200" style="max-width:100%; height:auto;></div> 
                 </div>
                 <div class="product-price">$61.91</div>
             </div>
@@ -937,63 +1019,63 @@
             <div class="product-card">
                 <div class="product-name">AROMATIZANTE WIESE</div>
                 <div class="product-desc">Lata de 400 ml </div>
-                <div class="product-desc"><img src="ImagenesProductos/AROMATIZANTE_WIESE.png" alt="" width="90" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AROMATIZANTE_WIESE.png" alt="" width="90" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$46.99</div>
             </div>
 
              <div class="product-card">
                 <div class="product-name">AROMATIZANTE GLADE</div>
                 <div class="product-desc">Lata de 323 gr </div>
-                <div class="product-desc"><img src="ImagenesProductos/AROMATIZANTE_GLADE.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/AROMATIZANTE_GLADE.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$62.65</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PASTILLA WIESE</div>
                 <div class="product-desc">Pastilla low cost de 48 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/PASTILLA_WIESE.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/PASTILLA_WIESE.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$17.16</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">REJILLA MINGITORIO</div>
                 <div class="product-desc">Rejilla para mingitorio conpastilla</div>
-                <div class="product-desc"><img src="ImagenesProductos/REJILLA_MINGITORIO.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/REJILLA_MINGITORIO.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$29.84</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PASTILLA WC</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/PASTILLA_WC.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/PASTILLA_WC.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$14.92</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PASTIBLOCK</div>
                 <div class="product-desc">Venta por pieza de 250 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/PASTIBLOCK.png" alt="" width="300" height="120"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/PASTIBLOCK.png" alt="" width="300" height="120" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$55.19</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PANTALLA SANITARIA</div>
                 <div class="product-desc">Venta por pieza</div>
-                <div class="product-desc"><img src="ImagenesProductos/PANTALLA_SANITARIA.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/PANTALLA_SANITARIA.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$23.87</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TAPETE EKOS</div>
                 <div class="product-desc">Tapete antisalpicaduras</div>
-                <div class="product-desc"><img src="ImagenesProductos/TAPETE_EKOS.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/TAPETE_EKOS.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$41.77</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CEPILLO BAÑO</div>
                 <div class="product-desc">Cepillo con base para sanitario</div>
-                <div class="product-desc"><img src="ImagenesProductos/CEPILLO_BAÑO.png" alt="" width="220" height="200"> </div>
+                <div class="product-desc"><img src="ImagenesProductos/CEPILLO_BAÑO.png" alt="" width="220" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$37.29</div>
             </div>
         </div>
@@ -1012,7 +1094,7 @@
             <div class="product-card">
                 <div class="product-name">CAFÉ LA FUENTE</div>
                 <div class="product-desc">Americano presentación de 500gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_LA_FUENTE.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_LA_FUENTE.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Caja con 10 piezas</td><td>$269.99</td></tr>
                     <tr><td>Indivudual</td><td>$27.00</td></tr>
@@ -1022,7 +1104,7 @@
             <div class="product-card">
                 <div class="product-name">CAFÉ EL MARINO</div>
                 <div class="product-desc">Tradicional 1 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_EL_MARINO.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_EL_MARINO.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Caja con 6 piezas</td><td>$658.00</td></tr>
                     <tr><td>Indivudual</td><td>$109.67</td></tr>
@@ -1032,42 +1114,42 @@
             <div class="product-card">
                 <div class="product-name">CAFÉ SG</div>
                 <div class="product-desc">Tipo americano, tostado molido 1 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_SG.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_SG.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$380.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CAFÉ MEMBER´S MARK</div>
                 <div class="product-desc">Tostado molido 1.200 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_MEMBER_S_MARK.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_MEMBER_S_MARK.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$679.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CAFÉ FOLGERS</div>
                 <div class="product-desc">Regular 734 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_FOLGERS.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_FOLGERS.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$719.01</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CAFÉ NESCAFÉ</div>
                 <div class="product-desc">Clásico 200 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/NESCAFÉ_CLÁSICO.png" alt="" width="130" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/NESCAFÉ_CLÁSICO.png" alt="" width="130" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$215.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CAFÉ SUPREME GRAIN</div>
                 <div class="product-desc">Café de montaña 1 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_SUPREME_GRAIN.png" alt="" width="130" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CAFÉ_SUPREME_GRAIN.png" alt="" width="130" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$164.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">COFFEE MATE</div>
                 <div class="product-desc">Sustituto de crema</div>
-                <div class="product-desc"><img src="ImagenesProductos/COFFEE_MATE.png" alt="" width="300" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/COFFEE_MATE.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Caja con 12 piezas de 311 gr</td><td>$1,091.96</td></tr>
                     <tr><td>Caja con 200 sobres de 4 gr</td><td>$268.50</td></tr>
@@ -1079,77 +1161,77 @@
             <div class="product-card">
                 <div class="product-name">MEMBER’S MARK</div>
                 <div class="product-desc">Sustituto de crema 1 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/SUSTITUTO_MEMBER_S.png" alt="" width="140" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/SUSTITUTO_MEMBER_S.png" alt="" width="140" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$170.01</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">AZÚCAR SANTA FE</div>
                 <div class="product-desc">Caja con 1000 sobres</div>
-                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_SANTA_FE.png" alt="" width="140" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_SANTA_FE.png" alt="" width="140" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$373.01</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">AZÚCAR MARINO</div>
                 <div class="product-desc">Caja con 1000 sobres</div>
-                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_MARINO.png" alt="" width="140" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_MARINO.png" alt="" width="140" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$564.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">AZÚCAR MORENA</div>
                 <div class="product-desc">Azucar 1 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_MORENA.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_MORENA.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$37.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">AZÚCAR REFINADA</div>
                 <div class="product-desc">Azucar 2 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_REFINADA.png" alt="" width="180" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AZÚCAR_REFINADA.png" alt="" width="180" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$112.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">SPLENDA</div>
                 <div class="product-desc">Caja con 700 sobres</div>
-                <div class="product-desc"><img src="ImagenesProductos/SPLENDA.png" alt="" width="290" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/SPLENDA.png" alt="" width="290" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$504.49</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">SAL</div>
                 <div class="product-desc">Sal 1 Kg</div>
-                <div class="product-desc"><img src="ImagenesProductos/SAL.png" alt="" width="260" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/SAL.png" alt="" width="260" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$40.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">AGUA BONAFONT</div>
                 <div class="product-desc">Paquete con 24 piezas de 500 mil</div>
-                <div class="product-desc"><img src="ImagenesProductos/AGUA_BONAFONT.png" alt="" width="90" height="260"></div>
+                <div class="product-desc"><img src="ImagenesProductos/AGUA_BONAFONT.png" alt="" width="90" height="260" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$240.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">GALLETAS GAMESA</div>
                 <div class="product-desc">Mega pack 1400 gr</div>
-                <div class="product-desc"><img src="ImagenesProductos/GALLETAS_GAMESA.png" alt="" width="300" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/GALLETAS_GAMESA.png" alt="" width="300" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$228.51</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">COCA COLA</div>
                 <div class="product-desc">Refresco de lata de 355 mil c/24</div>
-                <div class="product-desc"><img src="ImagenesProductos/COCA_COLA.png" alt="" width="180" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/COCA_COLA.png" alt="" width="180" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$720.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">VASO TÉRMICO</div>
                 <div class="product-desc">Caja con 1000 pzas</div>
-                <div class="product-desc"><img src="ImagenesProductos/VASO_TÉRMICO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/VASO_TÉRMICO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>- #108</td><td>$541.51</td></tr>
                     <tr><td>- #110</td><td>$685.00</td></tr>
@@ -1160,77 +1242,77 @@
             <div class="product-card">
                 <div class="product-name">PLATO PASTELERO</div>
                 <div class="product-desc">Paquete con 25 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/PLATO_PASTELERO.png" alt="" width="150" height="150"></div>
+                <div class="product-desc"><img src="ImagenesProductos/PLATO_PASTELERO.png" alt="" width="150" height="150" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$18.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PLATO MEDIANO</div>
                 <div class="product-desc">Paquete con 20 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/PLATO_MEDIANO.png" alt="" width="200" height="200"></div>
+                <div class="product-desc"><img src="ImagenesProductos/PLATO_MEDIANO.png" alt="" width="200" height="200" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$44.99</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CUCHILLO PLÁSTICO</div>
                 <div class="product-desc">Paquete con 20 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/CUCHILLO_PLÁSTICO.png" alt="" width="190" height="230"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CUCHILLO_PLÁSTICO.png" alt="" width="190" height="230" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$13.49</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CUCHARA PLÁSTICO</div>
                 <div class="product-desc">Paquete con 25 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/CUCHARA_PLÁSTICO.png" alt="" width="180" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CUCHARA_PLÁSTICO.png" alt="" width="180" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$10.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CUCHARA SOPERA</div>
                 <div class="product-desc">Paquete con 20 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/CUCHARA_SOPERA.png" alt="" width="180" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CUCHARA_SOPERA.png" alt="" width="180" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$9.67</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TENEDOR PLÁSTICO</div>
                 <div class="product-desc">Paquete con 25 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/TENEDOR_PLÁSTICO.png" alt="" width="180" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/TENEDOR_PLÁSTICO.png" alt="" width="180" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$10.50</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TENEDOR GRANDE</div>
                 <div class="product-desc">Paquete con 20 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/TENEDOR_GRANDE.png" alt="" width="130" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/TENEDOR_GRANDE.png" alt="" width="130" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$9.67</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CHAROLA MARIEL</div>
                 <div class="product-desc">Paquete con 50 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/CHAROLA_MARIEL.png" alt="" width="250" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CHAROLA_MARIEL.png" alt="" width="250" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$34.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">VASO CÓNICO VENUS</div>
                 <div class="product-desc">#104 con 250pzs</div>
-                <div class="product-desc"><img src="ImagenesProductos/VASO_CÓNICO.png" alt="" width="250" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/VASO_CÓNICO.png" alt="" width="250" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$53.10</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">VASO CÓNICO SUPREME GOLD</div>
                 <div class="product-desc">#104 con 200pzs</div>
-                <div class="product-desc"><img src="ImagenesProductos/VASO_CÓNICO_200.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/VASO_CÓNICO_200.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$67.35</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">PORTA VASOS</div>
                 <div class="product-desc">Con 4 espacios</div>
-                <div class="product-desc"><img src="ImagenesProductos/PORTA_VASOS.png" alt="" width="250" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/PORTA_VASOS.png" alt="" width="250" height="180" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>Caja con 300 pzs</td><td>$665.00</td></tr>
                     <tr><td>Paquete con 75 pzs</td><td>$170.00</td></tr>
@@ -1252,35 +1334,35 @@
             <div class="product-card">
                 <div class="product-name">GUANTES DE NITRILO</div>
                 <div class="product-desc">Caja con 100 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/GUANTES_DE_NITRILO.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/GUANTES_DE_NITRILO.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$126.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">CUBREBOCAS</div>
                 <div class="product-desc">Plisado triple, blanco caja con 50 piezas</div>
-                <div class="product-desc"><img src="ImagenesProductos/CUBREBOCAS.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/CUBREBOCAS.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$64.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">COFIA</div>
                 <div class="product-desc">Blanca plisada </div>
-                <div class="product-desc"><img src="ImagenesProductos/COFIA.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/COFIA.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$100.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">GUANTE CLÁSICO</div>
                 <div class="product-desc">Guante de limpieza #8 y #9</div>
-                <div class="product-desc"><img src="ImagenesProductos/GUANTE_CLÁSICO.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/GUANTE_CLÁSICO.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$19.39</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">EMPLAYE</div>
                 <div class="product-desc">Película plástica</div>
-                <div class="product-desc"><img src="ImagenesProductos/EMPLAYE.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/EMPLAYE.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <table class="variant-table">
                     <tr><td>20” X 4000 calibre 60</td><td>$597.85</td></tr>
                     <tr><td>18” X 1000 calibre 60</td><td>$125.00</td></tr>
@@ -1291,20 +1373,21 @@
             <div class="product-card">
                 <div class="product-name">RAFIA</div>
                 <div class="product-desc">Calibre 3, venta por kilo</div>
-                <div class="product-desc"><img src="ImagenesProductos/RAFIA.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/RAFIA.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$100.00</div>
             </div>
 
             <div class="product-card">
                 <div class="product-name">TRAPO INDUSTRIAL</div>
                 <div class="product-desc">Disponible por kilo</div>
-                <div class="product-desc"><img src="ImagenesProductos/TRAPO_INDUSTRIAL.png" alt="" width="200" height="180"></div>
+                <div class="product-desc"><img src="ImagenesProductos/TRAPO_INDUSTRIAL.png" alt="" width="200" height="180" style="max-width:100%; height:auto;></div>
                 <div class="product-price">$28.34</div>
             </div>
         </div>
     </section>
     </section>
 
+    <section id="Contacto7" class="section" style="background-color: #f9fbfd;"></section>
     <!-- FOOTER -->
     <div class="footer">
         <h3>📞 ¡HAGAMOS TU PEDIDO!</h3>
@@ -1332,6 +1415,30 @@
     <button onclick="window.print()" style="position: fixed; bottom: 20px; right: 20px; background: #277ec3; color: white; border: none; padding: 15px 25px; border-radius: 50px; cursor: pointer; font-size: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000;">
         🖨️ Guardar como PDF
     </button> -->
+    
+    <!-- JAVASCRIPT -->
+    <script>
+        // Función para abrir/cerrar el menú
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
 
+        // Función para cerrar el menú al hacer clic en un enlace
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Cerrar el menú si se hace clic fuera de él
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('.nav-categories');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
